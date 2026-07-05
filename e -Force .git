@@ -1,0 +1,17 @@
+[33mcommit 96cd238ca0aced9f7ab056c876a34cf8097a8764[m
+Author: Mohith Hariharan <mohithhariharan28@gmail.com>
+Date:   Sun Jul 5 14:42:47 2026 +0530
+
+    Remove .env from repository
+
+[33mcommit d5886ebb824376fee81f99b0e11e12f412c0bd86[m
+Author: Mohith Hariharan <mohithhariharan28@gmail.com>
+Date:   Sun Jul 5 14:23:53 2026 +0530
+
+    Update OpenRouter integration and fix authentication
+
+[33mcommit 78148f9c605d149ef93302de7d39e17f5ac66136[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Mohith Hariharan <mohithhariharan28@gmail.com>
+Date:   Sun Jul 5 12:57:22 2026 +0530
+
+    Updated Mohith AI Assistant

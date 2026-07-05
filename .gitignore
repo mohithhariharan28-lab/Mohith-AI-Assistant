@@ -1,0 +1,92 @@
+# ==============================================================================
+# Professional .gitignore for Python + Streamlit Project
+# Project Stack: Python, Streamlit, OpenRouter API, dotenv, pandas, VS Code, Windows
+# ==============================================================================
+
+# --- API Keys, Secrets & Credentials ---
+# Never commit your private API keys or local configuration files to version control
+.env
+.env.local
+.env.*.local
+.streamlit/secrets.toml
+secrets.toml
+
+# --- Virtual Environments ---
+# Ignore local development environment directories
+.venv/
+venv/
+ENV/
+env/
+venv.bak/
+.venv.bak/
+
+# --- Python Cache & Compiled Files ---
+# Compiled bytecode, optimization caches, and metadata
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+.cache
+htmlcov/
+
+# --- Build & Distribution Files ---
+# Ignore files generated during building or packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- IDEs and Editors ---
+# VS Code (except for shared workspace settings if explicitly needed)
+.vscode/
+# PyCharm / IntelliJ
+.idea/
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints
+
+# --- OS-Generated Files ---
+# Windows OS temporary/system files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS OS temporary/system files (included for cross-platform compatibility)
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# --- Local Project Data & Debug Files ---
+# Ignore locally generated CSV data, logs, and debug exports
+*.log
+debug_import.txt
+debug_import_utf8.txt
+feedback.csv
