@@ -36,8 +36,7 @@ inject_theme()
 inject_background()
 
 # Initialize session state variables
-if "api_key" not in st.session_state:
-    st.session_state.api_key = config.OPENROUTER_API_KEY
+st.session_state.api_key = config.OPENROUTER_API_KEY
 if "model" not in st.session_state:
     st.session_state.model = config.DEFAULT_MODEL
 if "temperature" not in st.session_state:
@@ -261,33 +260,37 @@ elif selected_page == "Settings":
     # API Configuration Section
     st.markdown("### 🔑 API Authentication")
     
-    api_key_input = st.text_input(
-        "OpenRouter API Key",
-        value=st.session_state.api_key if st.session_state.api_key else "",
-        type="password",
-        help="Input your secret OpenRouter API key. This is saved in-memory for the current session."
-    )
-    
-    validate_col1, validate_col2 = st.columns([1, 4])
-    with validate_col1:
-        if st.button("🔑 Save Key", use_container_width=True):
-            st.session_state.api_key = api_key_input
-            # Recreate cached singleton client
-            st.session_state.ai_client = AIClient(api_key_input)
-            st.success("API Key updated locally!")
-            st.rerun()
+    raw_key = config.OPENROUTER_API_KEY
+    if raw_key:
+        if len(raw_key) > 12:
+            masked_key = raw_key[:8] + "*" * (len(raw_key) - 12) + raw_key[-4:]
+        else:
+            masked_key = raw_key[:8] + "*" * len(raw_key) + raw_key[-4:]
             
-    with validate_col2:
+        st.text_input(
+            "OpenRouter API Key",
+            value=masked_key,
+            type="password",
+            disabled=True
+        )
+        st.success("✅ OpenRouter API Key Configured")
+    else:
+        st.text_input(
+            "OpenRouter API Key",
+            value="",
+            type="password",
+            disabled=True
+        )
+        st.error("❌ OpenRouter API Key Not Found")
+        
+    if raw_key:
         if st.button("🔍 Validate API Key", use_container_width=True):
-            if not api_key_input:
-                st.error("Please enter a key to validate.")
-            else:
-                with st.spinner("Validating with OpenRouter..."):
-                    validator = AIClient(api_key_input)
-                    if validator.validate_api_key() == "Valid":
-                        st.success("API Key is VALID and working!")
-                    else:
-                        st.error("API Key validation failed. Please check the key and billing status.")
+            with st.spinner("Validating with OpenRouter..."):
+                validator = AIClient(raw_key)
+                if validator.validate_api_key() == "Valid":
+                    st.success("API Key is VALID and working!")
+                else:
+                    st.error("API Key validation failed. Please check the key and billing status.")
 
     st.markdown("---")
     
