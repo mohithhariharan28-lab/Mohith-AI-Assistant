@@ -16,8 +16,7 @@ except Exception:
 if not OPENROUTER_API_KEY:
     OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
-DEFAULT_MODEL = "meta-llama/llama-3.3-8b-instruct:free"
-
+DEFAULT_MODEL = "openai/gpt-oss-20b:free"
 DEFAULT_TEMPERATURE = 0.7
 
 DEFAULT_MAX_TOKENS = 2048
